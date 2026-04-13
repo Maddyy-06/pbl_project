@@ -1,17 +1,15 @@
-# config.py - Configuration settings
+import os
 from pathlib import Path
 
 class Config:
-    # Image settings
     IMG_SIZE = 128
-    PIXEL_TO_MM = 0.7  # Standard CT conversion
+    # Clinical HU Windowing (The "Kaggle Standard")
+    HU_MIN = -150
+    HU_MAX = 250
+    CROP_SIZE = (128, 128)
     
-    # Paths
-    BASE_DIR = Path(".")
-    SAMPLE_IMAGES_DIR = BASE_DIR / "sample_images"
-    MODEL_DIR = BASE_DIR / "saved_models"
-    OUTPUT_DIR = BASE_DIR / "outputs"
-    
-    # Create directories
-    MODEL_DIR.mkdir(exist_ok=True)
-    OUTPUT_DIR.mkdir(exist_ok=True)
+    # Path Logic
+    BASE_DIR = Path(__file__).resolve().parent
+    YOLO_MODEL = str(BASE_DIR / "models" / "yolo_final.pt")
+    UNET_MODEL = str(BASE_DIR / "models" / "unet_tumor_final.pth")
+    SAMPLE_CASES = BASE_DIR / "datasets" / "sample_cases"
