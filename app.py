@@ -89,7 +89,7 @@ def predict(image_np):
 
 def main():
     st.title("🔬 Kidney Tumor Detection")
-    st.write("Registration ID: 2430010055 | Guide: Dr. Ridhi Arora")
+    st.write("Registration ID: 2427030337 | Guide: Dr. Ridhi Arora")
     st.markdown("---")
     
     # Global variable to hold the image to be processed
