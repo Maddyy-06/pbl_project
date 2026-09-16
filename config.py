@@ -1,15 +1,19 @@
-import os
 from pathlib import Path
+import torch
 
 class Config:
-    IMG_SIZE = 128
-    # Clinical HU Windowing (The "Kaggle Standard")
-    HU_MIN = -150
-    HU_MAX = 250
-    CROP_SIZE = (128, 128)
+    IMG_SIZE = 256
+    CROP_SIZE = 256
+    DEVICE = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     
-    # Path Logic
-    BASE_DIR = Path(__file__).resolve().parent
-    YOLO_MODEL = str(BASE_DIR / "models" / "yolo_final.pt")
-    UNET_MODEL = str(BASE_DIR / "models" / "unet_tumor_final.pth")
-    SAMPLE_CASES = BASE_DIR / "datasets" / "sample_cases"
+    YOLO_MODEL_PATH = Path("models/yolo_final.pt")
+    UNET_MODEL_PATH = Path("models/surgeon_unet_corrected_best.pth")
+    
+    YOLO_CONF_THRESH = 0.25
+    UNET_CONF_THRESH = 0.50
+
+# Exports for legacy imports
+YOLO_MODEL = Config.YOLO_MODEL_PATH
+UNET_MODEL = Config.UNET_MODEL_PATH
+DEVICE = Config.DEVICE
+DATA_DIR = Path("datasets/kits19")

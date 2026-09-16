@@ -1,3 +1,4 @@
-# Environment setup
-pip install -r requirements.txt
-echo "Setup Complete. Run ./run.sh to start."
+#!/bin/bash
+
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt

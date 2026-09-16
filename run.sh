@@ -1,2 +1,2 @@
-# Command to launch the application
+#!/bin/bash
 streamlit run app.py
